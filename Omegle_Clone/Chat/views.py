@@ -10,5 +10,4 @@ def landingPage(request):
 
 
 def room(request,name):
-    print('name',name)
     return render(request,'room.html', {'name':name})
