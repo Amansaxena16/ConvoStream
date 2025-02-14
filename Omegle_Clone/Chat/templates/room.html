@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room</title>
-</head>
-<body>  
-    <h3>Hi {{ name }}</h3>
-    <textarea id="chat_box" rows="10" cols="50" disabled></textarea>
-    <br>
-    <input type="text" id="message_input" placeholder="Type a message...">
-    <button onclick="sendMessage()">Send</button>
-</body>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Room</title>
+    </head>
+    <body>  
+        <h3>Hi {{ name }}</h3>
+        <textarea id="chat_box" rows="10" cols="50" disabled></textarea>
+        <br>
+        <input type="text" id="message_input" placeholder="Type a message...">
+        <button type="submit" onclick="sendMessage()">Send</button>
+        
+    </body>
+    
+{% load static %}
 <script src="{% static 'js/script.js' %}"></script>
 </html>
