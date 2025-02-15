@@ -32,14 +32,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'daphne',
+    'Chat', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
-    'Chat',
 ]
 
 # this is used to store data in memory (like chat)
@@ -77,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Omegle_Clone.wsgi.application'
+# WSGI_APPLICATION = 'Omegle_Clone.wsgi.application'
 ASGI_APPLICATION = "Omegle_Clone.asgi.application"
 
 
