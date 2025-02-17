@@ -8,13 +8,29 @@
         <title>Room</title>
     </head>
     <body>  
-        <!-- <h3>Hi {{ name }}</h3> -->
-         <h3>Chat Room</h3>
-        <textarea id="chat_box" rows="10" cols="50" disabled></textarea>
-        <br>
-        <input type="text" id="message_input" placeholder="Type a message...">
-        <button type="submit" onclick="sendMessage()">Send</button>
-        
+        <!-- user name  -->
+        <h3>Hi {{ name }}</h3>
+
+        <!-- Managing video and chat div  -->
+        <div class="videoChat">
+
+            <!-- displaying video  -->
+            <div class="video">
+                <video id="remoteVideo" autoplay></video>
+                <video id="localVideo" autoplay></video> 
+            </div>
+
+            <!-- displaying chat  -->
+            <div class="chat">
+                <span>Chat Room</span>
+                <div class="chatBox">
+                    <textarea id="chat_box" rows="30" cols="70" disabled></textarea> </div>
+                    <input type="text" id="message_input" placeholder="Type a message...">
+                    <button id="button" type="submit">Send</button> 
+                </div>
+
+            </div>
+        </div>
     </body>
     
 <script src="{% static 'js/script.js' %}"></script>

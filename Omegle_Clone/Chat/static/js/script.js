@@ -1,26 +1,40 @@
-const roomName = 'test_room'
-const chatSocket = new WebSocket(`ws://127.0.0.1:8000/room/${roomName}/`)
+let localStream;
+let peerConnection;
+const config = {
+    iceServers: [
+      {
+        urls: 'stun:stun.l.google.com:19302' // Google's public STUN server
+      }
+    ]
+  };
 
-// Handle WebSocket connection open
-chatSocket.onopen = function(e){
-    console.log('Websocket Connected')
-    return
+// Get user's camera & microphone
+async function startVideo(){
+    try{
+        localStream = navigator.mediaDevices.getUserMedia({video: true, audio: true}) 
+        document.getElementById('remoteVideo').srcObject = localStream
+    }
+    catch(error){
+        console.error("Error accessing camera/microphone:", error);
+    }
+
 }
 
-// Handle messages received from WebSocket
-chatSocket.onmessage = function(e){
-    const data = JSON.parse(e.data)
-    console.log("Message received:", data.message);
+function createPeerConnection(){
+    peerConnection = new RTCPeerConnection(config)  // config contains STUN servers (helps find each other's IP address).
+
+    // Add local stream connection 
+    localStream.getTrack().forEach(track => {
+        peerConnection.addTrack(track,localStream)  // This adds your video & audio to the WebRTC connection.
+    });
+
+    // Handle when we receive a remote stream
+    peerConnection.ontrack = (event) => {
+        document.getElementById('remoteVideo').srcObject = event.streams[0]  // When the other user sends their video,show it on my screen.
+    }
+
+    return peerConnection
 }
 
-// Handle WebSocket connection close
-chatSocket.onclose = function(e){
-    console.log('Websocket Closed')
-}// Function to send message via WebSocket
-
-
-// Function to send message via WebSocket
-function sendMessage(){
-    const messageInput = document.getElementById('message_input').value
-    chatSocket.send(JSON.stringify({message: messageInput}))
-}
+// Start video when the page loads
+startVideo();

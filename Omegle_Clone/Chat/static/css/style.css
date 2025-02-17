@@ -1,10 +1,40 @@
+/* Landing Page Css start from here  */
 h2{
     text-align: center;
     font-weight: 600;
     color: black;
 }
+/* Landing Page Css Ends here  */
 
-h3{
-    color:skyblue;
-    font-weight: 700;
+/* Room Page Css start from here  */
+.videoChat {
+    display: flex;
+    justify-content: space-around;
+
 }
+.videoChat .chat .chatBox {
+    display: flex;
+
+}
+#message_input {
+    width: 83%;
+    height: 1.7rem;
+    margin: .8rem 0rem;
+}
+#button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+.videoChat .chat span{
+    color:#04AA6D;
+    font-weight: 700;
+    font-size: 1.7rem;
+}
+/* Room page css ends here  */
