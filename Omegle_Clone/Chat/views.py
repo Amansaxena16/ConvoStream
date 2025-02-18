@@ -10,4 +10,5 @@ def landingPage(request):
 
 
 def room(request,name):
+    queue = []
     return render(request,'room.html', {'name':name})

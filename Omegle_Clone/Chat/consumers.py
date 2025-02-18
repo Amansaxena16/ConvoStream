@@ -4,14 +4,17 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 
 class ChatConsumer(AsyncWebsocketConsumer):
+    
     async def connect(self):
-        await self.accept()
-
-    async def disconnect(self, close_code):
+        self.accept()
+    
+    async def disconnect(self, code):
         pass
     
-    async def recieve(self, text_data):
-        data = json.load(text_data)
-        await self.send(text_data = json.dumps({'message': data['message']}))
-    
+    async def message(self, text_data):
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
+        await self.send(text_data=json.dumps({
+            'message': message
+        }))
     
